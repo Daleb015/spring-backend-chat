@@ -13,7 +13,10 @@ public class ChatController {
     @SendTo("/chat/mensaje")
     public Mensaje recibeMensaje(Mensaje mensaje){
     mensaje.setFecha(new Date().getTime());
-    mensaje.setTexto("recibido por broker: "+mensaje.getTexto());
+    mensaje.setTexto(mensaje.getTexto());
+    if (mensaje.getTipo().equals("NUEVO_USUARIO")){
+        mensaje.setTexto(" Nuevo usuario conectado");
+    }
     return mensaje;
     }
 }
